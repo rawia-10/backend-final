@@ -12,12 +12,10 @@ require("dotenv").config({
 // const userrouter=require("./routers/userrouter")
 const patientrouter=require("./routers/patientrouter")
 const medecinrouter=require("./routers/medecinrouter")
-// const secretairerouter=require("./routers/secretairerouter")
+const secretairerouter=require("./routers/secretairerouter")
 const rendezvousrouter=require("./routers/rendezvousrouter")
-// const portfoliorouter=require("./routers/portfoliorouter")
-// const rappelrouter=require("./routers/rappelrouter")
 const rolerouter=require("./routers/role")
-// const adminrouter=require("./routers/adminrouter")
+const adminrouter=require("./routers/adminrouter")
 
 const db=require("./models/db")
 const app=express()
@@ -41,6 +39,8 @@ app.use("/patient",patientrouter)
 app.use("/medecin",medecinrouter)
 app.use("/rdv",rendezvousrouter)
 app.use("/role",rolerouter)
+app.use("/secretaire",secretairerouter)
+app.use("/admin",adminrouter)
 
 app.listen(config.express_port, function () {
   console.log(`App running on port ${config.express_port}`);
