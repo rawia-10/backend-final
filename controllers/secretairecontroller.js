@@ -20,7 +20,7 @@ module.exports={
         genre:req.body.genre,
         date_naissance:req.body.date_naissance,
         role:req.body.role,
-       
+        medecin:req.body.medecin,
 
       
          
@@ -46,7 +46,7 @@ module.exports={
 
 getall:function(req,res){
    
-        secretairemodel.find({},function(err,secretaire){ 
+        secretairemodel.find({}).populate("medecin").exec(function(err,secretaire){ 
         if (err){
           res.json({state:"no",msg:"vous avez un erreur"})
         }

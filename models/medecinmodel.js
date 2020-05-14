@@ -42,7 +42,8 @@ horaire_travail:{
     type:String,
     required: false, 
     trim: true,  
-}
+},
+
 
 })
 

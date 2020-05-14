@@ -13,6 +13,7 @@ addrendezvous:function(req,res){
           tel:req.body.tel,
           nom:req.body.nom,
           prenom:req.body.prenom,
+          rdvBy:req.user
          
             
             });

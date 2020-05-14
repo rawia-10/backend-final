@@ -19,7 +19,11 @@ const adminrouter=require("./routers/adminrouter")
 
 const db=require("./models/db")
 const app=express()
-
+const customMiddleware=(req,res,next)=>
+{
+  console.log('ok')
+  next()
+}
 
 app.set('secretKey','test')//nal9awouha fi authentification
 

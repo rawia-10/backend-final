@@ -1,9 +1,17 @@
 const patientmodel=require("../models/patientmodel")
 const bcrypt = require ('bcryptjs');
 const jwt = require ('jsonwebtoken')
+const nodemailer=require('nodemailer')
 
-
-
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+       email: process.env.EMAIL ,
+      //'abc@gmail.com', // TODO: your gmail account
+      password: process.env.PASSWORD 
+      //'1234' // TODO: your gmail password
+  }
+});
 module.exports={
 
 addpatient:function(req,res){
@@ -21,17 +29,20 @@ addpatient:function(req,res){
          // rendezvous:req.body.rendezvous,
             
             });
-            patient.save(function(err)
-            {
-
-           if(err){
-            res.json({state:"no"})
-      }
-    //on utilise API REST res.json
-      else
-      {
-      res.json({state:'ok',msg:'patient est  ajouter'}) }
-      })
+            patient.save()
+            .then(patient=>{
+              // transporter.sendMail({
+              //     to:patient.email,
+              //     from:"ajilirawia2@gmail.com",
+              //     subject:"signup success",
+              //     html:"<h1>welcome to MyDoc</h1>"
+              // })
+              res.json({message:"saved successfully"})
+          })
+          .catch(err=>{
+              console.log(err)
+          })
+     
     },
 
 getall:function(req,res){
@@ -116,6 +127,23 @@ updatepatient: function(req, res){
         }
     }
 });
+},
+profile:function(req, res)  {
+  var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+  patientmodel.findOne({
+    _id: decoded._id
+  })
+    .then(patientmodel => {
+      if (patientmodel) {
+        res.json(patientmodel)
+      } else {
+        res.send('patient does not exist')
+      }
+    })
+    .catch(err => {
+      res.send('error: ' + err)
+    })
 }
 
 
