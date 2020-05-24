@@ -1,6 +1,6 @@
 const medecincontroller=require("../controllers/medecincontroller")
 const multer=require("multer")
-const upload=multer({dest:__dirname+"/upload/images"})
+const upload=multer({dest:__dirname+"/upload/images/"})
 
 const router=require('express').Router();
 

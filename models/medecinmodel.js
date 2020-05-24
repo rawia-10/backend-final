@@ -27,8 +27,7 @@ atitude_professionelle:{
 
 image:{
     type:String,
-    required: true, 
-    trim: true, 
+   
 },
 
 

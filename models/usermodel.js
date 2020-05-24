@@ -17,44 +17,44 @@ const Schema=mongoose.Schema;
 const userschema=mongoose.model('user',new mongoose.Schema({   //tjiblna collection min base  de donne
 nom:{
     type:String,
-    required: true, //obligatoire
+    
     trim: true, //éviter les espaces
 },
 prenom:{
     type:String,
-    required: true, 
+     
     trim: true, 
 },
 
 email:{
     type:String,
-    required: true, 
+    
     trim: true, 
 },
 password:{
     type:String,
-    required: true, 
+   
     trim: true, 
 },
 tel:{
     type:Number,
-    required: true, 
+   
     trim: true, 
 },
 address:{
     type:String,
-    required: true, 
+    
     trim: true, 
 },
 
 genre:{
     type:String,
-    required: true, 
+    
     trim: true, 
 },
 date_naissance:{
     type:String,
-    required: true, 
+   
     trim: true, 
 },
 
@@ -69,6 +69,7 @@ UpdatedAt:{
     required: false, 
     trim: true, 
 },
+
 IsActive:{
     type:Boolean,
     required: false, 

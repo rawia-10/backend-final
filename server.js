@@ -16,6 +16,8 @@ const secretairerouter=require("./routers/secretairerouter")
 const rendezvousrouter=require("./routers/rendezvousrouter")
 const rolerouter=require("./routers/role")
 const adminrouter=require("./routers/adminrouter")
+const portfolio=require("./routers/portfolio")
+const sendemail=require("./routers/emailrouter")
 
 const db=require("./models/db")
 const app=express()
@@ -45,7 +47,8 @@ app.use("/rdv",rendezvousrouter)
 app.use("/role",rolerouter)
 app.use("/secretaire",secretairerouter)
 app.use("/admin",adminrouter)
-
+app.use("/portfolio",portfolio)
+app.use("/email",sendemail)
 app.listen(config.express_port, function () {
   console.log(`App running on port ${config.express_port}`);
 });
