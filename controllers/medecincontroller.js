@@ -1,70 +1,80 @@
-const medecinmodel=require("../models/medecinmodel")
-const fs=require("fs")
-const multer=require("multer")
-const upload=multer({dest:__dirname+"/upload/images"})
+const medecinmodel=require('../models/medecinmodel')
+const fs=require('fs')
+const multer=require('multer')
+const upload=multer({dest:__dirname+"/uploads/images"})
 const bcrypt = require ('bcryptjs');
 const jwt = require ('jsonwebtoken')
 
 
 
-
 module.exports={
 
-
-  addmedecin:function(req, res){
-    var file=__dirname+"/upload/images/"+req.file.originalname
-  fs.readFile(req.file.path,function(err,medecin){
-  fs.writeFile(file,medecin,function(err){
-    if(err)
-    {res.json({state:"no",msg:"un erreur"})}
-    else{
-      const medecin=medecinmodel({
-        nom:req.body.nom,
-        prenom:req.body.prenom,
-        email:req.body.email,
-        password:req.body.password,
-        address:req.body.address,
-        tel:req.body.tel,
-        genre:req.body.genre,
-        date_naissance:req.body.date_naissance,
-        fix:req.body.fix,
-        image:req.file.originalname,
-        atitude_professionelle:req.body.atitude_professionelle,
-        specialite:req.body.specialite,
-        assurance_maladie:req.body.assurance_maladie,
-        role:req.body.role,
-       
-
-      
-         
-  
-      });
-      medecin.save(function (err)
-      {
-        if(err)
-        {console.log(err)
-         res.json ({state:'no',msg:'vous avez un erreur'})
-        }
-        else
-        {
-          res.json({state:'yes',msg:"medecin ajouter"})
-        }
-      })
-    }})})
-  },
-
-  getfile:function(req,res){
-    {
-  res.sendFile(__dirname+'/upload/images/'+req.params.image)
-    }
     
-  },
+  
+    
+      
+  
+
+    addmedecin:function(req, res){
+        var file=__dirname+"/uploads/images/"+req.file.originalname
+      fs.readFile(req.file.path,function(err,data){
+      fs.writeFile(file,data,function(err){
+        if(err)
+        {res.json({state:"no",msg:"un erreur"})
+        var response = {
+            message: 'Sorry, file couldn\'t be uploaded.',
+            filename: req.file.originalname}
+        }
+        else{
+            response = {
+                message: 'File uploaded successfully',
+                filename: req.file.originalname };
+          const medecin=medecinmodel({
+      
+            nom:req.body.nom,
+            prenom:req.body.prenom,
+            email:req.body.email,
+            password:req.body.password,
+            address:req.body.address,
+            tel:req.body.tel,
+            genre:req.body.genre,
+            date_naissance:req.body.date_naissance,
+            role:req.body.role,
+            image:req.file.originalname,
+            assurance_maladie:req.body.assurance_maladie,
+            fix:req.body.fix,
+            specialite:req.body.specialite,
+
+            
+          });
+          medecin.save(function (err)
+          {
+            if(err)
+            {console.log(err)
+             res.json ({state:'no',msg:'vous avez un erreur'})
+            }
+            else
+            {
+              res.json({state:'yes',msg:"medecin ajouter"})
+            }
+          })
+      
+        
+        }})})
+      },
+      getfile:function(req,res){
+        {
+      res.sendFile(__dirname+'/uploads/images/'+req.params.image)
+        }
+        
+      },
+
   
 
 
 getall:function(req,res){
    
-        medecinmodel.find({},function(err,medecin){ 
+        medecinmodel.find(function(err,medecin){ 
         if (err){
           res.json({state:"no",msg:"vous avez un erreur"})
         }
@@ -113,11 +123,11 @@ updatemedecin: function(req, res){
         tel:req.body.tel,
         genre:req.body.genre,
         date_naissance:req.body.date_naissance,
-        fix:req.body.fix,
-        image:req.file.originalname,
-        atitude_professionelle:req.body.atitude_professionelle,
-        specialite:req.body.specialite,
         assurance_maladie:req.body.assurance_maladie,
+        fix:req.body.fix,
+        specialite:req.body.specialite,
+        image:req.file.originalname,
+
      
 
             

@@ -81,7 +81,9 @@ role :{
     ref :'role'
 
 
-}
+},
+resetToken:String,
+expireToken:Date,
 })
 //bycrype c'est une fonction de hashage nous l'utiliserons pour hashage de mot de passe 
 .pre("save",function(){

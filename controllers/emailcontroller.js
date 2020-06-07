@@ -12,7 +12,7 @@ module.exports ={
           service: 'gmail',
           auth: {
             user: 'ajilirawia2@gmail.com',
-            pass: 'rawiaajili2.'
+            pass: 'rawiaajili2..'
           }
         });
         
