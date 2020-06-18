@@ -1,7 +1,8 @@
 const secretairemodel=require("../models/secretairemodel")
 const bcrypt = require ('bcryptjs');
 const jwt = require ('jsonwebtoken')
-
+var nodemailer = require("nodemailer");
+const sender = require ('../controllers/emailcontroller')
 
 
 
@@ -21,6 +22,7 @@ module.exports={
         date_naissance:req.body.date_naissance,
         role:req.body.role,
         medecin:req.body.medecin,
+      
 
       
          
@@ -34,8 +36,11 @@ module.exports={
         }
         else
         {
-          res.json({state:'yes',msg:"secretaire ajouter"})
+             
+          res.json({state:'yes',msg:"user ajouter"})
         }
+    
+        
       })
 
   },

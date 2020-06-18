@@ -13,7 +13,7 @@ addrendezvous:function(req,res){
           tel:req.body.tel,
           nom:req.body.nom,
           prenom:req.body.prenom,
-          rdvBy:req.user
+          
          
             
             });
@@ -22,7 +22,7 @@ addrendezvous:function(req,res){
 
                 
        if(err){
-    res.json({state:"no"})
+    res.json({state:"no",msg:"vous avez un erreur"})
       }
     //on utilise API REST res.json
       else

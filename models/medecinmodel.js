@@ -26,6 +26,11 @@ const medecinschema=user.discriminator('medecin',new mongoose.Schema({   //tjibl
    {type:String,
        required: false, 
    trim: true, 
+   },
+   diplome:{
+    type:String,
+    required: false, 
+trim: true, 
    }
     
 

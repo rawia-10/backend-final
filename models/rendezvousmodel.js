@@ -31,7 +31,7 @@ prenom:{
 },
 
 tel:{
-    type:Number,
+    type:String,
     required: true, 
     trim: true, 
 },
@@ -41,10 +41,6 @@ email:{
     required: true, 
     trim: true, 
 },
-rdvBy:{
-    type:ObjectId,
-    ref:"user"
- }
 
 })
 

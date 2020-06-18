@@ -19,9 +19,9 @@ module.exports ={
         var mailOptions = {
 
             from: ' "Rawya Ajili "  ',
-            to: req.body.to,
-            subject: req.body.subject,
-            text: req.body.text,
+            to: to,
+            subject:subject,
+            text: text,
 
         };
         

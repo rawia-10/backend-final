@@ -25,6 +25,7 @@
     "nodemailer": "^6.4.6",
     "path": "^0.12.7",
     "rootpath": "^0.1.2",
+    "twilio": "^3.46.0",
     "web-push": "^3.4.4"
   }
 }

@@ -44,7 +44,7 @@ module.exports={
             assurance_maladie:req.body.assurance_maladie,
             fix:req.body.fix,
             specialite:req.body.specialite,
-
+            diplome:req.body.diplome  ,
             
           });
           medecin.save(function (err)
@@ -127,7 +127,7 @@ updatemedecin: function(req, res){
         fix:req.body.fix,
         specialite:req.body.specialite,
         image:req.file.originalname,
-
+        diplome:req.body.diplome
      
 
             
@@ -150,7 +150,6 @@ updatemedecin: function(req, res){
         console.log(err)
     }
     else {
-//COMPARER pss utilisateur bil pass token
         if (bcrypt.compareSync(req.body.password, userInfo.password)) {
 
             const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), {expiresIn: '1h'});
@@ -163,8 +162,7 @@ updatemedecin: function(req, res){
         }
     }
 });
-}
-
+},
 
 
 }
